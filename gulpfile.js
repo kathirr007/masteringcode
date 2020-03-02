@@ -3,9 +3,12 @@ const gulp = require('gulp'),
   babel = require('gulp-babel'),
   gutil = require('gulp-util'),
   sourcemaps = require('gulp-sourcemaps'),
-  sass = require('gulp-sass'),
+  // sass = require('gulp-sass'),
   postcss = require('gulp-postcss'),
   cssnext = require('postcss-cssnext'),
+  $ = require('gulp-load-plugins')({
+      lazy: true
+  }),
 
   browserSupport = ['last 2 versions', 'ie 10'],
 
@@ -36,7 +39,10 @@ gulp.task('postcss', function() {
 // Sass
 gulp.task('sass', function() {
   gulp.src(source + 'scss/style.scss')
-    .pipe(sass().on('error', sass.logError))
+    .pipe($.sass().on('error', $.sass.logError))
+    .pipe($.autoprefixer({
+      cascade: false
+    }))
     .pipe(gulp.dest(dest + 'css'));
 });
 
