@@ -16,3 +16,87 @@ body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Ro
   background-color: hsl(175, 49%, 42%);
   position: relative;
 }
+
+@keyframes tooltip {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: -50%;
+  }
+  100% {
+    top: -100%;
+  }
+}
+
+@keyframes tooltipRight {
+  0% {
+    left: 0%;
+  }
+  50% {
+    left: 50%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes tooltipBottom {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: 50%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes tooltipLeft {
+  0% {
+    left: 0%;
+  }
+  50% {
+    left: -50%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+.tooltip::before {
+  color: black;
+  z-index: 1;
+  padding: 6px 12px;
+  border-radius: 4px;
+  background: hsla(45, 82%, 64%, .9);
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -100%;
+  left: 0;
+  display: none;
+  animation: tooltip 0.25s linear;
+}
+
+.tooltip:hover::before {
+  display: block;
+}
+
+.tooltip[data-position="right"]::before {
+  top: 0%;
+  left: 100%;
+  animation: tooltipRight 0.25s linear;
+}
+
+.tooltip[data-position="bottom"]::before {
+  top: 100%;
+  left: 0%;
+  animation: tooltipBottom 0.25s linear;
+}
+
+.tooltip[data-position="left"]::before {
+  top: 0%;
+  left: -100%;
+  animation: tooltipLeft 0.25s linear;
+}
