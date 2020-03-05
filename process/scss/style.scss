@@ -11,13 +11,7 @@ body  {
   margin: 3rem auto;
 }
 
-.image-bridge {
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0, .2),
-    rgba(0,0,0, .2)
-  ),url('../images/bridge.jpg');
-  height: 30vh;
+[class^="image-"] {
   background-repeat: no-repeat;
   background-position: center center; 
   background-size: cover;
@@ -26,5 +20,22 @@ body  {
   justify-content: center;
   align-items: center;
   color: white;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif    
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@mixin backImage($image, $height: 40) {
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0, .2),
+    rgba(0,0,0, .4)
+  ),url($image);
+  height: $height + vh;
+}
+
+.image-bridge {
+  @include backImage('https://images.unsplash.com/photo-1449034446853-66c86144b0ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80')
+}
+
+.image-vancouver {
+  @include backImage('https://images.unsplash.com/uploads/14127101912749510b8ed/82743738?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80', 30)
 }
