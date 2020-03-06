@@ -16,7 +16,7 @@ function handleItem(id, text) {
 
   newElement = document.createElement('div');
   newElement.id = 'currentAlert';
-  newElement.className = 'alert alert-danger';
+  newElement.className = 'alert alert-warning';
   newElement.innerHTML =  text;
   
   targetElement= document.querySelector(id).parentNode;
